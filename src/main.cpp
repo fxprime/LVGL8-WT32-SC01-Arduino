@@ -34,7 +34,19 @@ static int32_t x, y;
 void display_flush( lv_display_t *disp, const lv_area_t *area, uint8_t * px_map);
 void touchpad_read( lv_indev_t * indev, lv_indev_data_t * data );
 // void lv_button_demo(void);
- 
+ void lv_example_style_7(void)
+{
+    static lv_style_t style;
+    lv_style_init(&style);
+
+    lv_style_set_arc_color(&style, lv_palette_main(LV_PALETTE_RED));
+    lv_style_set_arc_width(&style, 4);
+
+    /*Create an object with the new style*/
+    lv_obj_t * obj = lv_arc_create(lv_screen_active());
+    lv_obj_add_style(obj, &style, 0);
+    lv_obj_center(obj);
+}
  
 void setup(void)
 {
@@ -88,7 +100,7 @@ void setup(void)
   lv_obj_t *label = lv_label_create(lv_scr_act()); // full screen as the parent
   lv_label_set_text(label, LVGL_Arduino.c_str());  // set label text
   lv_obj_align(label, LV_ALIGN_TOP_MID, 0, 20);      // Center but 20 from the top
-
+  lv_example_style_7();
   // lv_button_demo();
 }
 
